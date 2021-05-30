@@ -16,8 +16,11 @@ def f12(x):
     }[True]
    return a
 
+def f13(n,m):
+    return sum(math.exp(i) - math.log(i) - 5 for i in range(1,n+1)) - 29*sum(sum(pow(i,5) - 48*pow(j, 4) for j in range(1,m+1)) for i in range(1,n+1))
 
 if __name__ == '__main__':
     print(f11(22,36,33))
     print(f12(24))
+    print(f13(66,77))
 

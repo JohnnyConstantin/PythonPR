@@ -7,30 +7,23 @@ def f11(x, y, z):
 
 
 def f12(x):
-   a = {
-        x < 2: math.exp(pow(x,6) - pow(x, 8) +23) - 74*pow(x, 3) - 47,
-        2 <= x < 34: 22*pow((23*pow(x, 4) + 98*x),6) + pow(x, 8)/61,
-        34 <= x < 72: math.tan(pow(x, 7)/61 + pow(x, 5)/84) + pow(x, 6)/35,
-        72 <= x < 139: 57*pow(x, 8) - 73*pow(x, 3) - 46,
-        x >= 139: pow((pow(x,6) + pow(x,7)/99), 8)+42*x
+    a = {
+        x < 2: math.exp(pow(x, 6) - pow(x, 8) + 23) - 74 * pow(x, 3) - 47,
+        2 <= x < 34: 22 * pow((23 * pow(x, 4) + 98 * x), 6) + pow(x, 8) / 61,
+        34 <= x < 72: math.tan(pow(x, 7) / 61 + pow(x, 5) / 84) + pow(x, 6) / 35,
+        72 <= x < 139: 57 * pow(x, 8) - 73 * pow(x, 3) - 46,
+        x >= 139: pow((pow(x, 6) + pow(x, 7) / 99), 8) + 42 * x
     }[True]
-   return a
+    return a
 
 
-def f13(n,m):
-    return sum(math.exp(i) - math.log(i) - 5 for i in range(1,n+1)) - 29*sum(sum(pow(i,5) - 48*pow(j, 4) for j in range(1,m+1)) for i in range(1,n+1))
+def f13(n, m):
+    return sum(math.exp(i) - math.log(i) - 5 for i in range(1, n + 1)) - 29 * sum(
+        sum(pow(i, 5) - 48 * pow(j, 4) for j in range(1, m + 1)) for i in range(1, n + 1))
 
 
 def f14(n):
-        if n == 0:
-            return 6
-        else:
-            return 1/15*f14(n-1) - 1/99*pow(f14(n-1), 3)
-
-
-if __name__ == '__main__':
-    print(f11(22,36,33))
-    print(f12(24))
-    print(f13(66,77))
-    print(f14(11))
-
+    if n == 0:
+        return 6
+    else:
+        return 1 / 15 * f14(n - 1) - 1 / 99 * pow(f14(n - 1), 3)

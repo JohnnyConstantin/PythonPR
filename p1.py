@@ -27,3 +27,37 @@ def f14(n):
         return 6
     else:
         return 1 / 15 * f14(n - 1) - 1 / 99 * pow(f14(n - 1), 3)
+
+def f21(x):
+    if x[4] == 'minid':
+        if x[2] == 'cool':
+            if x[3] == 1981:
+                return 4
+            elif x[3] == 1959:
+                return 5
+        elif x[2] == 'elm':
+            return 3
+        elif x[2] == 'xslt':
+            if x[1] == 'max':
+                return 2
+            elif x[1] == 'antlr':
+                if x[0] == 2018:
+                    return 0
+                elif x[0] == 2005:
+                    return 1
+    elif x[4] == 'coq':
+        if x[0] == 2018:
+            if x[1] == 'antlr':
+                if x[2] == 'xslt':
+                    return 6
+                elif x[2] == 'elm':
+                    return 7
+                elif x[2] == 'cool':
+                    return 8
+            elif x[1] == 'max':
+                if x[3] == 1981:
+                    return 9
+                elif x[3] == 1959:
+                    return 10
+        elif x[0] == 2005:
+            return 11

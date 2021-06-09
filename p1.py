@@ -81,18 +81,74 @@ def f22(x):
     return int((D << 31) + (B << 25) + (C << 17) + (G << 15) + (A << 11) + (E << 5) + F)
 
 
-def f23(x):
-    x_unique = []
-    for i in x:
-        if i not in x_unique and i != [None for aa in range(len(i))]:
-            x_unique.append(i)
-    for i in x_unique:
-        i[0] = i[0][:-3] + i[0][-2:]
-        i[1] = i[1][-1] + '0%' if i[1][-1] != '0' else ('100%' if i[1][0] == '1' else '0%')
-        i[2] = i[2][:2] + '.' + i[2][3:5] + '.' + i[2][8:]
-        i[3] = i[3][:i[3].index('@')]
+class C32():
 
-    return sorted(x_unique, key=lambda st: st[3])
+    S0 = 'A'
+
+    def add(self):
+        if self.S0 == 'A':
+            self.S0 = 'B'
+            return 0
+        elif self.S0 == 'F':
+            self.S0 = 'B'
+            return 8
+        elif self.S0 == 'G':
+            self.S0 = 'B'
+            return 10
+        elif self.S0 == 'D':
+            self.S0 = 'E'
+            return 4
+        elif self.S0 == 'C':
+            self.S0 = 'C'
+            return 3
+        else:
+            return None
+
+    def warp(self):
+        if self.S0 == 'B':
+            self.S0 = 'C'
+            return 1
+        elif self.S0 == 'F':
+            self.S0 = 'G'
+            return 7
+        elif self.S0 == 'G':
+            self.S0 = 'C'
+            return 11
+        elif self.S0 == 'C':
+            self.S0 = 'D'
+            return 2
+        elif self.S0 == 'E':
+            self.S0 = 'F'
+            return 6
+        else:
+            return None
+
+    def turn(self):
+        if self.S0 == 'D':
+            self.S0 = 'D'
+            return 5
+        elif self.S0 == 'G':
+            self.S0 = 'H'
+            return 9
+        else:
+            return None
 
 if __name__ == '__main__':
-    print(f22(0xfcfaee1c))
+    o = C32()
+    print(o.add())
+    print(o.warp())
+    print(o.add())
+    print(o.warp())
+    print(o.warp())
+    print(o.turn())
+    print(o.add())
+    print(o.warp())
+    print(o.add())
+    print(o.warp())
+    print(o.add())
+    print(o.add())
+    print(o.warp())
+    print(o.add())
+    print(o.warp())
+    print(o.warp())
+    print(o.add())

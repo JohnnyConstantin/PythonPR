@@ -61,3 +61,38 @@ def f21(x):
                     return 10
         elif x[0] == 2005:
             return 11
+
+
+# def f22(x):
+#     ed = x >> 27
+#     c = (x - (ed << 27)) >> 24
+#     b = (x - (ed << 27) - (c << 24)) >> 14
+#     a = (x - (ed << 27) - (c << 24) - (b << 14))
+#     return int((c << 29) + (a << 15) + (ed << 10) + b)
+
+def f22(x):
+    G = x >> 30
+    F = (x - (G << 30)) >> 25
+    E = (x - (G << 30) - (F << 25)) >> 19
+    D = (x - (G << 30) - (F << 25) - (E << 19)) >> 18
+    C = (x - (G << 30) - (F << 25) - (E << 19) - (D << 18)) >> 10
+    B = (x - (G << 30) - (F << 25) - (E << 19) - (D << 18) - (C << 10)) >> 4
+    A = (x - (G << 30) - (F << 25) - (E << 19) - (D << 18) - (C << 10) - (B << 4))
+    return int((D << 31) + (B << 25) + (C << 17) + (G << 15) + (A << 11) + (E << 5) + F)
+
+
+def f23(x):
+    x_unique = []
+    for i in x:
+        if i not in x_unique and i != [None for aa in range(len(i))]:
+            x_unique.append(i)
+    for i in x_unique:
+        i[0] = i[0][:-3] + i[0][-2:]
+        i[1] = i[1][-1] + '0%' if i[1][-1] != '0' else ('100%' if i[1][0] == '1' else '0%')
+        i[2] = i[2][:2] + '.' + i[2][3:5] + '.' + i[2][8:]
+        i[3] = i[3][:i[3].index('@')]
+
+    return sorted(x_unique, key=lambda st: st[3])
+
+if __name__ == '__main__':
+    print(f22(0xfcfaee1c))

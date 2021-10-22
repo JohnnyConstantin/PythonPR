@@ -1,7 +1,11 @@
+import json
+import random
+
 def main():
-    f = open('steam.dll', 'rb')
-    for a in f:
-        print(bytes(a))
+    for x in range (1,5):
+        dict = {"interface": x, "data": random.random()*x}
+        jsonstring = json.dumps(dict, indent=3)
+        print(jsonstring)
 
 
 if __name__ == '__main__':
